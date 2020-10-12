@@ -17,15 +17,12 @@ import photo from "./photo.jpg";
 const TestPage = () => {
   handlePressButtonAsyncOne = async () => {
     let result = await WebBrowser.openBrowserAsync("https://expo.io");
-    this.setState({ result });
   };
   handlePressButtonAsyncTwo = async () => {
     let result = await WebBrowser.openBrowserAsync("https://www.google.com/");
-    this.setState({ result });
   };
   handlePressButtonAsyncThree = async () => {
     let result = await WebBrowser.openBrowserAsync("https://twitter.com");
-    this.setState({ result });
   };
 
   return (
