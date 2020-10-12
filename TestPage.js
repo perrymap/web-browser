@@ -15,8 +15,16 @@ import photo from "./photo.jpg";
 
 //This is from the documents it handles the opening of the weh browser Replacing the url is the what url it will take you to
 const TestPage = () => {
-  handlePressButtonAsync = async () => {
+  handlePressButtonAsyncOne = async () => {
     let result = await WebBrowser.openBrowserAsync("https://expo.io");
+    this.setState({ result });
+  };
+  handlePressButtonAsyncTwo = async () => {
+    let result = await WebBrowser.openBrowserAsync("https://www.google.com/");
+    this.setState({ result });
+  };
+  handlePressButtonAsyncThree = async () => {
+    let result = await WebBrowser.openBrowserAsync("https://twitter.com");
     this.setState({ result });
   };
 
@@ -32,22 +40,28 @@ const TestPage = () => {
           {"\t"}There are four transportation options available in a variety of
           price ranges.
         </Text>
-        <TouchableOpacity onPress={this.handlePressButtonAsync}>
-          <Text style={styles.googleLink}>Google Link</Text>
+        <TouchableOpacity onPress={this.handlePressButtonAsyncOne}>
+          <Text style={styles.link}>Expo Link</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.handlePressButtonAsyncTwo}>
+          <Text style={styles.link}>Google Link</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.handlePressButtonAsyncThree}>
+          <Text style={styles.link}>Twitter Link</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() =>
             MailComposer.composeAsync({ recipients: ["perrymex@gmail.com"] })
           }
         >
-          <Text style={styles.googleLink}>Open Email</Text>
+          <Text style={styles.link}>Open Email</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             Linking.openURL("tel:8777111223");
           }}
         >
-          <Text style={styles.googleLink}>Perry Phone Number</Text>
+          <Text style={styles.link}>Perry Phone Number</Text>
         </TouchableOpacity>
 
         {/* You need to make a button for the action to be set off with. You/We can style the button howecer you want  */}
@@ -105,7 +119,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: "blue"
   },
-  googleLink: { fontSize: 20 }
+  link: { fontSize: 20 }
 });
 
 export default TestPage;
