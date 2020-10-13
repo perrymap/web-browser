@@ -2,7 +2,7 @@ import React from "react";
 import {
   Text,
   View,
-  Image,
+  // Image,
   StyleSheet,
   TouchableHighlight,
   Button,
@@ -12,6 +12,8 @@ import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
 import * as MailComposer from "expo-mail-composer";
 import photo from "./photo.jpg";
+import { Dimensions } from "react-native";
+import Image from "react-native-scalable-image";
 
 //This is from the documents it handles the opening of the weh browser Replacing the url is the what url it will take you to
 const TestPage = () => {
@@ -25,10 +27,26 @@ const TestPage = () => {
     let result = await WebBrowser.openBrowserAsync("https://twitter.com");
   };
 
+  let { width } = Dimensions.get("window");
+
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollview}>
-        <Image style={styles.mainImage} source={photo} />
+        {/* <Image style={styles.mainImage} source={photo} /> */}
+        <Image
+          style={{
+            width: width * 0.5,
+            height: width * 0.5 * 2.16,
+
+            marginRight: "20%"
+          }}
+          source={require("./photo.jpg")}
+        />
+        {/* <Image
+          width={width} // height will be calculated automatically
+          source={{ uri: "./photo.jpg" }}
+          style={styles.mainImage}
+        /> */}
 
         <Text style={styles.text1}>
           The Cancun airport is located 22 kilometer (13.5 miles) south of the
@@ -81,7 +99,6 @@ const TestPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 40,
     backgroundColor: "yellow"
   },
   text1: {
@@ -102,11 +119,11 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
   mainImage: {
-    resizeMode: "contain",
-    width: "100%",
-    maxHeight: 250,
-    borderWidth: 3,
-    borderColor: "red"
+    // resizeMode: "contain",
+    // width: "100%",
+    // maxHeight: 250,
+    // borderWidth: 3,
+    // borderColor: "red"
   },
   imageInline: {
     resizeMode: "contain",
